@@ -38,6 +38,8 @@ assert text.count(' — ') == len(text.split('*')) #проверка на чис
 
 dic_pic = {i.split(' — ')[0]:i.split(' — ')[1] for i in text.split('*')}
 
+counter = 0 #плохая идея, вынести в класс
+
 def question2():
     variants = random.sample(list(dic_pic.keys()), 4) #
     if random.choice(['direct', 'reverse']) == 'direct':
@@ -52,6 +54,8 @@ def question2():
         answer = input().lower()
         if new_dict[answer].upper() == dic_pic[term].upper():
             print('Верно')
+            global counter #очень плохо
+            counter += 1 #плохая идея, вынести в класс
         else:
             print('Неверно. Правильный ответ ', dic_pic[term].upper()) 
     else:
@@ -78,3 +82,4 @@ if __name__ == '__main__':
     for i in range(int(qn)):
         question2()
         time.sleep(1)
+    print(f'Окончание теста. Верных ответов {counter} из {qn}')
