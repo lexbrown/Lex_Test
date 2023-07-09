@@ -41,6 +41,7 @@ dic_pic = {i.split(' — ')[0]:i.split(' — ')[1] for i in text.split('*')}
 counter = 0 #плохая идея, вынести в класс
 
 def question2():
+    global counter #очень плохо
     variants = random.sample(list(dic_pic.keys()), 4) #
     if random.choice(['direct', 'reverse']) == 'direct':
         term = random.choice(variants)
@@ -54,7 +55,6 @@ def question2():
         answer = input().lower()
         if new_dict[answer].upper() == dic_pic[term].upper():
             print('Верно')
-            global counter #очень плохо
             counter += 1 #плохая идея, вынести в класс
         else:
             print('Неверно. Правильный ответ ', dic_pic[term].upper()) 
@@ -71,6 +71,7 @@ def question2():
         answer = input().lower()
         if new_dict[answer].upper() == q_dict[term].upper():
             print('Верно')
+            counter += 1 #плохая идея, вынести в класс
         else:
             print('Неверно. Правильный ответ ', q_dict[term].upper()) 
 
